@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
     private final UserService userService;
 
-    @PostMapping("/signup")
-    public String signup(@RequestBody SignupRequest request) {
+    @PostMapping("/api/signup")
+    public String signup(SignupRequest request) {
         userService.signup(request);
         return "signup success";
     }
