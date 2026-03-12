@@ -10,13 +10,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-// UserDetails 타입을 구현한 커스텀 구현체
-// DB에서 조회된 User Entity의 값을 시큐리티에서 사용할 수 있도록 UserDetails 타입으로 감싸주는 래퍼 역할
-// 결국 DB에서 조회된 엔티티인 User가 가지고 있는 값들에 맞게 UserDetails의 메서드들을 바인딩
 @AllArgsConstructor
 public class CustomUserDetails implements UserDetails {
 
-    // DB에서 받은 User Entity
     private final User user;
 
     @Override
