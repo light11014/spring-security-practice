@@ -22,6 +22,6 @@ public class AuthController {
     @PostMapping("/signup")
     public String signup(@ModelAttribute SignupRequest request) {
         userService.signup(request);
-        return "redirect:/custom/login";
+        return "redirect:/login";
     }
 }

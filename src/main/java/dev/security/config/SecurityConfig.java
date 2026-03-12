@@ -17,15 +17,15 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/main", "/custom/login", "/signup", "/error").permitAll()
+                        .requestMatchers("/main", "/login", "/signup", "/error").permitAll()
                         .requestMatchers("/customer/**").hasRole("CUSTOMER")
                         .requestMatchers("/owner/**").hasRole("OWNER")
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .formLogin(form ->
-                        form.loginPage("/custom/login")
-                                .loginProcessingUrl("/custom/login")
+                        form.loginPage("/login")
+                                .loginProcessingUrl("/login")
                                 .defaultSuccessUrl("/main", true)
                                 .permitAll()
                 );
