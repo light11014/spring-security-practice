@@ -27,7 +27,7 @@ public class SecurityConfig {
         // 폼 로그인 방식 활성화
         http
             .authorizeHttpRequests((authorize) -> authorize
-                    .requestMatchers(regexMatcher("/main")).permitAll()
+                            .requestMatchers("/signup").permitAll()
                     // main 경로에 대해서는 permitAll(), 모든 요청 허용
                     .anyRequest().hasAnyAuthority("READ")
 

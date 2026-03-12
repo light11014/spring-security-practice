@@ -21,6 +21,8 @@ public class MvcConfig implements WebMvcConfigurer {
         // /custom/login 경로로 요청하면 login.html로 응답
         registry.addViewController("/custom/login").setViewName("login");
 
+        registry.addViewController("/signup").setViewName("signup");
+
         /// ....
     }
 }

@@ -21,11 +21,9 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return user.getAuthorities().stream()
-                .map(authority -> new SimpleGrantedAuthority(authority.getName()))
-                .collect(Collectors.toList());
-        // DB에서 조회된 각 사용자의 권한(read, write)을 SimpleGrantedAuthority로 매핑
-        // SimpleGrantedAuthority -> GrantedAuthority의 구현체
+        return List.of(
+                new SimpleGrantedAuthority("ROLE_" + user.getRole().name())
+        );
     }
 
     @Override
