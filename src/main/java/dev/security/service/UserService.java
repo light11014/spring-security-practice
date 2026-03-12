@@ -10,12 +10,14 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class UserService {
+
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
     public void signup(SignupRequest request) {
-        userRepository.findUserByUsername(request.getUsername()).orElseThrow(
-                ()-> new IllegalArgumentException("이미 존재하는 사용자입니다."));
+        if (userRepository.findUserByUsername(request.getUsername()).isPresent()) {
+            throw new IllegalArgumentException("이미 존재하는 사용자입니다.");
+        }
 
         User user = User.builder()
                 .username(request.getUsername())
