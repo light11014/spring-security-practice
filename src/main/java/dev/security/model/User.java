@@ -14,12 +14,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(unique = true)
     private String username;
+
     private String password;
 
-    // 개별 사용자는 2개 이상의 권한을 가질 수 있음(ex. 읽기(READ), 쓰기(WRITE)..)
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-    private List<Authority> authorities;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     /**
      * 비밀번호 인코딩 처리

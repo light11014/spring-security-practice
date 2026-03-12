@@ -11,28 +11,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-// UserDetailsService 인터페이스를 구현한 커스텀 구현체
-// JPA를 통해 사용자 정보를 DB에서 조회할 수 있도록 구현
 @Slf4j
 @Service
-// @RequiredArgsConstructor // 생성자 기반 주입 with lombok
+@RequiredArgsConstructor
 public class JpaUserDetailsService implements UserDetailsService {
 
-    // JPA 의존성(EntityManager)
     private final UserRepository userRepository;
 
-    public JpaUserDetailsService(UserRepository userRepository) {
-        System.out.println("jpaUserDetailsService");
-        this.userRepository = userRepository;
-    }
-
-    /**
-     * Spring Data JPA를 통해 DB에서 사용자 정보 조회, 
-     * 클라이언트에게 파라미터로 전달받은 username에 해당하는 사용자만 조회
-     * @param username the username identifying the user whose data is required.
-     * @return UserDetails 타입의 사용자 객체
-     * @throws UsernameNotFoundException
-     */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         System.out.println("username = " + username);
